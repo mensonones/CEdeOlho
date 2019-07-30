@@ -1,14 +1,11 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  width: 100%;
-  justify-content: center;
-  align-items: center;
+  padding: 20px;
   border-radius: 4px;
-  background: #4469b0;
-  box-shadow: 1px 1px 1px #404354;
-  shadow-radius: 1;
-  elevation: 1;
+  background: #ffff;
+  margin-bottom: 15px;
+  margin-top: 3;
 `;
 
 export const TituloJob = styled.Text`

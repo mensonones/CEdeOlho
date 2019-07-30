@@ -1,4 +1,6 @@
 import styled from 'styled-components/native';
+import LinearGradient from 'react-native-linear-gradient';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 export const Container = styled.View`
   padding: 20px;
@@ -8,10 +10,27 @@ export const Container = styled.View`
   margin-top: 3;
 `;
 
+export const Container2 = styled(LinearGradient).attrs({
+  colors: ['#4469B0', '#4469B0'],
+  start: { x: 0, y: 0 },
+  end: { x: 1, y: 1 }
+})`
+  flex: 1;
+  padding-top: ${30 + getStatusBarHeight(true)}px;
+`;
+
 export const TituloJob = styled.Text`
   font-size: 18px;
   font-weight: bold;
   color: #333;
+`;
+
+export const List = styled.FlatList.attrs({
+  contentContainerStyle: { paddingHorizontal: 20 },
+  showVerticalScrollIndicator: false
+})`
+  margin-top: 20px;
+  padding: 0 1px;
 `;
 
 export const Empresa = styled.Text.attrs({

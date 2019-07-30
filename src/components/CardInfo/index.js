@@ -12,7 +12,7 @@ import {
 
 import CardDespesa from '~/components/CardDespesa/index';
 
-import { Container, TituloJob } from './styles';
+import { Container, TituloJob, List, Container2 } from './styles';
 
 export default function CardInfo({ data }) {
   const [despesas, setDespesas] = useState([]);
@@ -22,13 +22,11 @@ export default function CardInfo({ data }) {
     try {
       const response = await fetch(
         `https://dadosabertos.camara.leg.br/api/v2/deputados/${id}/despesas`
-      )
-        .then(res => res.json())
-        .then(dados => console.log(dados.dados));
-      //const json = await response;
-      //setDespesas(json.dados);
-      //setModalDespesa(!modalDespesa);
-      // await setModalDespesa(!modalDespesa)
+      ).then(res => res.json());
+      const json = await response;
+      console.log(json.dados);
+      setDespesas(json.dados);
+      setModalDespesa(!modalDespesa);
     } catch (err) {
       console.log(err);
     }
@@ -85,18 +83,14 @@ export default function CardInfo({ data }) {
             setModalDespesa(!modalDespesa);
           }}
         >
-          <View
-            style={{
-              flex: 1,
-              height: 90,
-              width: 150,
-              alignSelf: 'flex-end'
-            }}
-          >
-            <TituloJob style={{ color: '#000' }}>
-              {despesas.ano || 'sem dados'}
-            </TituloJob>
-          </View>
+          <Container2>
+            <List
+              keyboardShouldPersistTaps="handled"
+              data={despesas}
+              keyExtractor={item => String(item.numDocumento)}
+              renderItem={({ item }) => <CardDespesa despesa={item} />}
+            />
+          </Container2>
         </Modal>
       </Container>
     </TouchableWithoutFeedback>
