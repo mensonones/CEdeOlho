@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { View, ActivityIndicator, Image, ImageBackground } from "react-native";
+import React, { useState, useEffect } from 'react';
+import { ActivityIndicator, Image } from 'react-native';
 
-import CardInfo from "~/components/CardInfo/index";
+import CardInfo from '~/components/CardInfo/index';
 
-import { material } from "react-native-typography";
+import { material } from 'react-native-typography';
 
-import { Container, Title, List } from "./styles";
+import { Container, Title, List } from './styles';
 
 export default function Home() {
   const [deputados, setDeputados] = useState([]);
@@ -13,7 +13,7 @@ export default function Home() {
   async function loadData() {
     try {
       const response = await fetch(
-        "https://dadosabertos.camara.leg.br/api/v2/deputados?siglaUf=CE&ordem=ASC&ordenarPor=nome",
+        'https://dadosabertos.camara.leg.br/api/v2/deputados?siglaUf=CE&ordem=ASC&ordenarPor=nome'
       ).then(res => res.json());
       const json = await response;
       console.log(json);
@@ -31,8 +31,8 @@ export default function Home() {
     return (
       <Container>
         <Image
-          style={{ width: 420, height: 88, position: "absolute" }}
-          source={require("~/assests/imgs/grana.jpg")}
+          style={{ width: 420, height: 88, position: 'absolute' }}
+          source={require('~/assests/imgs/grana.jpg')}
         />
         <Title style={material.headlineWhite}>Deputados Federais</Title>
         <List
@@ -49,8 +49,8 @@ export default function Home() {
     return (
       <Container>
         <Image
-          style={{ width: 420, height: 88, position: "absolute" }}
-          source={require("~/assests/imgs/grana.jpg")}
+          style={{ width: 420, height: 88, position: 'absolute' }}
+          source={require('~/assests/imgs/grana.jpg')}
         />
         <Title style={material.headlineWhite}>Deputados Federais</Title>
 
@@ -59,7 +59,7 @@ export default function Home() {
           size="large"
           style={{
             flex: 1,
-            height: 80,
+            height: 80
           }}
         />
       </Container>

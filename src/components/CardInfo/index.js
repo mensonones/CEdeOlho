@@ -4,14 +4,15 @@ import {
   Modal,
   View,
   Text,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
+  Linking
 } from 'react-native';
 
 import CardDespesa from '~/components/CardDespesa/index';
 
 import { material } from 'react-native-typography';
 
-import { Container, TituloJob, List, Container2 } from './styles';
+import { Container, BtnMdInfo, BtnMdText, List, Container2 } from './styles';
 
 export default function CardInfo({ data }) {
   const [despesas, setDespesas] = useState([]);
@@ -62,6 +63,17 @@ export default function CardInfo({ data }) {
             <Text style={material.body2}>{' - '}</Text>
             <Text style={material.body2}>{data.siglaUf}</Text>
           </View>
+        </View>
+
+        <View style={{ alignItems: 'flex-end' }}>
+          <BtnMdInfo
+            onPress={() => Linking.openURL(`mailto:${data.email || 'N/A'}`)}
+            title="E-mail deputado"
+          >
+            <BtnMdText>
+              <Text style={material.caption}>{'E-mail deputado'}</Text>
+            </BtnMdText>
+          </BtnMdInfo>
         </View>
 
         <Modal
