@@ -3,14 +3,13 @@ import {
   Image,
   Modal,
   View,
-  Share,
   Text,
-  Alert,
-  TouchableWithoutFeedback,
-  ActivityIndicator
+  TouchableWithoutFeedback
 } from 'react-native';
 
 import CardDespesa from '~/components/CardDespesa/index';
+
+import { material } from 'react-native-typography';
 
 import { Container, TituloJob, List, Container2 } from './styles';
 
@@ -57,21 +56,11 @@ export default function CardInfo({ data }) {
             alignSelf: 'flex-end'
           }}
         >
-          <Text
-            style={{
-              color: '#323232',
-              fontSize: 14,
-              margin: 2,
-              fontWeight: 'bold'
-            }}
-          >
-            {data.nome}
-          </Text>
+          <Text style={material.body2}>{data.nome}</Text>
           <View style={{ flexDirection: 'row' }}>
-            <Text style={{ color: '#323232', margin: 6 }}>
-              {data.siglaPartido}
-            </Text>
-            <Text style={{ color: '#323232', margin: 6 }}>{data.siglaUf}</Text>
+            <Text style={material.body2}>{data.siglaPartido}</Text>
+            <Text style={material.body2}>{' - '}</Text>
+            <Text style={material.body2}>{data.siglaUf}</Text>
           </View>
         </View>
 

@@ -5,18 +5,21 @@ import { getStatusBarHeight } from 'react-native-status-bar-height';
 export const Container = styled.View`
   padding: 20px;
   border-radius: 4px;
-  background: #ffff;
+  background: #f2f5fb;
   margin-bottom: 15px;
   margin-top: 3;
+  box-shadow: 10px 5px 5px black;
+
+  elevation: 6;
 `;
 
 export const Container2 = styled(LinearGradient).attrs({
-  colors: ['#4469B0', '#4469B0'],
+  colors: ['#a1c1da', '#f2f5fb'],
   start: { x: 0, y: 0 },
   end: { x: 1, y: 1 }
 })`
   flex: 1;
-  padding-top: ${30 + getStatusBarHeight(true)}px;
+  padding-top: ${20 + getStatusBarHeight(true)}px;
 `;
 
 export const TituloJob = styled.Text`

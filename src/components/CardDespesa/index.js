@@ -11,92 +11,42 @@ import {
   Local
 } from './styles';
 
+import { material } from 'react-native-typography';
+
 export default function CardDespesa({ despesa }) {
   return (
     <Container>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-        <Text
-          style={{
-            color: '#323232',
-            fontSize: 14,
+      <View style={{ flexDirection: 'column', paddingTop: 2 }}>
+        <Text style={material.body2}>{'N.º Documento'}</Text>
 
-            fontWeight: 'bold'
-          }}
-        >
-          {'Data: '}
-        </Text>
-
-        <Text>{despesa.dataDocumento}</Text>
-
-        <Text
-          style={{
-            color: '#323232',
-            fontSize: 14,
-
-            fontWeight: 'bold'
-          }}
-        >
-          {'N.º Documento: '}
-        </Text>
-
-        <Text>{despesa.numDocumento}</Text>
-      </View>
-
-      <View style={{ paddingTop: 2 }}>
-        <Text
-          style={{
-            color: '#323232',
-            fontSize: 14,
-
-            fontWeight: 'bold'
-          }}
-        >
-          {'Fornecedor(a): '}
-        </Text>
-
-        <Text style={{ color: '#323232' }}>{despesa.nomeFornecedor}</Text>
+        <Text style={material.caption}>{despesa.numDocumento}</Text>
       </View>
 
       <View style={{ flexDirection: 'column', paddingTop: 2 }}>
-        <Text
-          style={{
-            color: '#323232',
-            fontSize: 14,
+        <Text style={material.body2}>{'Data'}</Text>
 
-            fontWeight: 'bold'
-          }}
-        >
-          {'Tipo Despesa: '}
-        </Text>
-        <Text style={{ color: '#323232' }}>{despesa.tipoDespesa}</Text>
+        <Text style={material.caption2}>{despesa.dataDocumento}</Text>
       </View>
 
-      <View style={{ flexDirection: 'row', paddingTop: 2 }}>
-        <Text
-          style={{
-            color: '#323232',
-            fontSize: 14,
+      <View style={{ flexDirection: 'column', paddingTop: 2 }}>
+        <Text style={material.body2}>{'Fornecedor(a)'}</Text>
 
-            fontWeight: 'bold'
-          }}
-        >
-          {'Tipo Documento: '}
-        </Text>
-        <Text style={{ color: '#323232' }}>{despesa.tipoDocumento}</Text>
+        <Text style={material.caption2}>{despesa.nomeFornecedor}</Text>
       </View>
 
-      <View style={{ flexDirection: 'row', paddingTop: 2 }}>
-        <Text
-          style={{
-            color: '#323232',
-            fontSize: 14,
+      <View style={{ flexDirection: 'column', paddingTop: 2 }}>
+        <Text style={material.body2}>{'Tipo Despesa'}</Text>
+        <Text style={material.caption2}>{despesa.tipoDespesa}</Text>
+      </View>
 
-            fontWeight: 'bold'
-          }}
-        >
-          {'Valor: '}
-        </Text>
-        <Text style={{ color: '#323232' }}>{despesa.valorDocumento}</Text>
+      <View style={{ flexDirection: 'column', paddingTop: 2 }}>
+        <Text style={material.body2}>{'Tipo Documento'}</Text>
+        <Text style={material.caption2}>{despesa.tipoDocumento}</Text>
+      </View>
+
+      <View style={{ flexDirection: 'column', paddingTop: 2 }}>
+        <Text style={material.body2}>{'Valor'}</Text>
+        <Text style={material.caption2}>{despesa.valorDocumento}</Text>
       </View>
     </Container>
   );
