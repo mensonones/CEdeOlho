@@ -14,18 +14,18 @@ import { material } from 'react-native-typography';
 
 import { Container, BtnMdInfo, BtnMdText, List, Container2 } from './styles';
 
+import api from '~/services/api.js';
+
 export default function CardInfo({ data }) {
   const [despesas, setDespesas] = useState([]);
   const [modalDespesa, setModalDespesa] = useState(false);
 
   async function getDespesas(id) {
     try {
-      const response = await fetch(
-        `https://dadosabertos.camara.leg.br/api/v2/deputados/${id}/despesas`
-      ).then(res => res.json());
-      const json = await response;
-      console.log(json.dados);
-      setDespesas(json.dados);
+      const response = await api.get(`/deputados/${id}/despesas`);
+      const { dados } = response.data;
+
+      setDespesas(dados);
       setModalDespesa(!modalDespesa);
     } catch (err) {
       console.log(err);

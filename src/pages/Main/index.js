@@ -8,51 +8,55 @@ import Container from '~/components/Container';
 
 import { material } from 'react-native-typography';
 
+import api from "~/services/api.js";
+
 const Home = () => {
-    const [deputados, setDeputados] = useState([]);
+  const [deputados, setDeputados] = useState([]);
 
-    async function loadData() {
-        try {
-            const response = await fetch(
-                'https://dadosabertos.camara.leg.br/api/v2/deputados?siglaUf=CE&ordem=ASC&ordenarPor=nome'
-            ).then(res => res.json());
-            const json = await response;
-            console.log(json);
-            setDeputados(json.dados);
-        } catch (err) {
-            console.log(err);
-        }
+  async function loadData() {
+    try {
+      const response = await api.get(
+        "/deputados?siglaUf=CE&ordem=ASC&ordenarPor=nome"
+      );
+      const { dados } = response.data;
+      setDeputados(dados);
+    } catch (err) {
+      console.log(err);
     }
+  }
 
-    const _renderList = !deputados.length ?
-        <Loading /> : <List
-            keyboardShouldPersistTaps="handled"
-            data={deputados}
-            onEndReached={loadData}
-            onEndReachedThreshold={0.1}
-            keyExtractor={item => String(item.id)}
-            renderItem={({ item }) => <CardInfo data={item} />}
-        />
+  const _renderList = !deputados.length ? (
+    <Loading />
+  ) : (
+    <List
+      keyboardShouldPersistTaps="handled"
+      data={deputados}
+      onEndReached={loadData}
+      onEndReachedThreshold={0.1}
+      keyExtractor={item => String(item.id)}
+      renderItem={({ item }) => <CardInfo data={item} />}
+    />
+  );
 
-    useEffect(() => {
-        loadData();
-    }, []);
+  useEffect(() => {
+    loadData();
+  }, []);
 
-    return (
-        <Container variant='column'>
-            <ImageBackground
-                style={{ width: '100%', height: 80, justifyContent: 'center' }}
-                source={require('~/assests/imgs/grana.jpg')}
-            >
-                <Title style={material.headlineWhite}>Deputados Federais</Title>
-            </ImageBackground>
-            {_renderList}
-        </Container>
-    );
-}
+  return (
+    <Container variant="column">
+      <ImageBackground
+        style={{ width: '100%', height: 80, justifyContent: 'center' }}
+        source={require('~/assests/imgs/grana.jpg')}
+      >
+        <Title style={material.headlineWhite}>Deputados Federais</Title>
+      </ImageBackground>
+      {_renderList}
+    </Container>
+  );
+};
 
 Home.navigationOptions = () => ({
-    header: null
-})
+  header: null
+});
 
 export default Home;
