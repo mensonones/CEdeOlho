@@ -8,7 +8,7 @@ import Container from '~/components/Container';
 
 import { material } from 'react-native-typography';
 
-import api from "~/services/api.js";
+import api from '~/services/api.js';
 
 const Home = () => {
   const [deputados, setDeputados] = useState([]);
@@ -16,7 +16,7 @@ const Home = () => {
   async function loadData() {
     try {
       const response = await api.get(
-        "/deputados?siglaUf=CE&ordem=ASC&ordenarPor=nome"
+        '/deputados?siglaUf=CE&ordem=ASC&ordenarPor=nome',
       );
       const { dados } = response.data;
       setDeputados(dados);
@@ -56,7 +56,7 @@ const Home = () => {
 };
 
 Home.navigationOptions = () => ({
-  header: null
+  header: null,
 });
 
 export default Home;
